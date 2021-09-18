@@ -14,10 +14,11 @@ def teardown_appcontext(self):
     """ Tears down the session """
     storage.close()
 
+
 @app.errorhandler(404)
 def invalid_route(e):
     """ Redirects to 404 json message if error occurs """
-    return jsonify({"error": "Not found"})
+    return jsonify({"error": "Not found"}), 404
 
 if __name__ == '__main__':
     host = os.getenv('HBNB_API_HOST', '0.0.0.0')
