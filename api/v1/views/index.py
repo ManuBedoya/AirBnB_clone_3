@@ -9,6 +9,7 @@ def show_status():
     """ Shows status of an endpoint. """
     return jsonify({"status": "OK"})
 
+
 @app_views.route('/stats')
 def gives_stats():
     """ Counts the amount of objects of each class. """
@@ -21,7 +22,7 @@ def gives_stats():
     from models.state import State
     from models.user import User
     dict_count = {
-        "amenities": storage.count(Amenity), 
+        "amenities": storage.count(Amenity),
         "cities": storage.count(City),
         "places": storage.count(Place),
         "reviews": storage.count(Review),
