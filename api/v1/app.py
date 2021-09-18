@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Creates app with Flask instance """
-from flask import Flask
+from flask import Flask, jsonify, abort
 from models import storage
 from api.v1.views import app_views
 import os
@@ -13,6 +13,11 @@ app.register_blueprint(app_views)
 def teardown_appcontext(self):
     """ Tears down the session """
     storage.close()
+
+@app.errorhandler(404)
+def invalid_route(e):
+    """ Redirects to 404 json message if error occurs """
+    return jsonify({"error": "Not found"})
 
 if __name__ == '__main__':
     host = os.getenv('HBNB_API_HOST', '0.0.0.0')
