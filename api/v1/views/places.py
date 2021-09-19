@@ -81,7 +81,7 @@ def post_place(city_id):
 def put_place(place_id):
     """ update place with specified id """
     try:
-        place = storage.get(City, place_id)
+        place = storage.get(Place, place_id)
         if place is None:
             abort(404)
         if not request.get_json():
