@@ -8,7 +8,7 @@ from models.city import City
 
 
 @app_views.route('/cities/<city_id>/places', strict_slashes=False)
-def display_cities(city_id):
+def display_places(city_id):
     """display the cities of a state"""
     try:
         cities = storage.get(City, city_id)
@@ -25,7 +25,7 @@ def display_cities(city_id):
 
 
 @app_views.route('/places/<place_id>', strict_slashes=False)
-def display_city(place_id):
+def display_place(place_id):
     """display a place"""
     try:
         place = storage.get(Place, place_id)
