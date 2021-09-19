@@ -57,7 +57,7 @@ def post_states():
 
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def put_states(state_id):
-    """ update state """
+    """ update state with specified id """
     try:
         state = storage.get(State, state_id)
         if not request.get_json():
