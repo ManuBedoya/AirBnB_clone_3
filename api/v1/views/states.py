@@ -9,10 +9,10 @@ from models.state import State
 @app_views.route('/states', strict_slashes=False)
 @app_views.route('/states/<state_id>', strict_slashes=False)
 def display_states(state_id=None):
-    """display the states and cities"""
+    """display the states"""
     if state_id is None:
         states = []
-        for value in storage.all().values():
+        for value in storage.all(State).values():
             states.append(value.to_dict())
     else:
         try:
