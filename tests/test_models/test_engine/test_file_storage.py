@@ -133,7 +133,7 @@ class TestFileStorage(unittest.TestCase):
     def test_get(self):
         """Test that gets properly objects from file.json"""
         storage = FileStorage()
-        new_dict = storage.all(User)
+        new_dict = storage.all()
         object_to_check = list(new_dict.values())[0]
         object_class = object_to_check.__class__
         object_id = object_to_check.id
