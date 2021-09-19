@@ -9,7 +9,7 @@ from models.city import City
 
 @app_views.route('/cities/<city_id>/places', strict_slashes=False)
 def display_places(city_id):
-    """display the cities of a place"""
+    """display the places of a city"""
     try:
         cities = storage.get(City, city_id)
         if cities is None:
@@ -37,7 +37,7 @@ def display_place(place_id):
 
 
 @app_views.route(
-    'places/<place_id>',
+    '/places/<place_id>',
     methods=['DELETE'],
     strict_slashes=False)
 def delete_place(place_id):
