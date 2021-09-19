@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" This module creates view for City objects """
+""" This module creates view for User objects """
 from api.v1.views import app_views
 from models import storage
 from flask import jsonify, abort, request
@@ -49,8 +49,10 @@ def post_users():
     try:
         if not request.get_json():
             return jsonify({'error': 'Not a JSON'}), 400
-        if 'name' not in list(request.get_json().keys()):
-            return jsonify({'error': 'Missing name'}), 400
+        if 'email' not in list(request.get_json().keys()):
+            return jsonify({'error': 'Missing email'}), 400
+        if 'password' not in list(request.get_json().keys()):
+            return jsonify({'error': 'Missing password'}), 400
         user = User(**request.get_json())
         user.save()
         return jsonify(user.to_dict()), 201
