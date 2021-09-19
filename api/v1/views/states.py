@@ -9,7 +9,7 @@ from models.state import State
 @app_views.route('/states', strict_slashes=False)
 @app_views.route('/states/<state_id>', strict_slashes=False)
 def display_states(state_id=None):
-    """display the states and cities listed in alphabetical order"""
+    """display the states and cities"""
     if state_id is None:
         states = []
         for value in storage.all().values():
