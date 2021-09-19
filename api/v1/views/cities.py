@@ -86,7 +86,7 @@ def put_city(city_id):
         if not request.get_json():
             return jsonify({'error': 'Not a JSON'}), 400
         for key, value in request.get_json().items():
-            if key not in City.__dict__.keys() or key == 'name':
+            if key not in ['id', 'state_id', 'created_at', 'updated_at']:
                 setattr(city, key, value)
         city.save()
         return jsonify(city.to_dict()), 200
