@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-""" This module creates view for State objects """
+""" This module creates view for City objects """
 from api.v1.views import app_views
 from models import storage
 from flask import jsonify, abort, request
-from models import city
 from models.state import State
 from models.city import City
 
