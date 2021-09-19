@@ -9,13 +9,13 @@ from models.city import City
 
 @app_views.route('/cities/<city_id>/places', strict_slashes=False)
 def display_places(city_id):
-    """display the cities of a state"""
+    """display the cities of a place"""
     try:
         cities = storage.get(City, city_id)
         if cities is None:
             abort(404)
         places_list = []
-        all_places = storage.all(City)
+        all_places = storage.all(Place)
         for place in all_places.values():
             if place.city_id == city_id:
                 places_list.append(place.to_dict())
