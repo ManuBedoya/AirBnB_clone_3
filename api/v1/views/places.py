@@ -69,6 +69,9 @@ def post_place(city_id):
         if 'name' not in list(request.get_json().keys()):
             return jsonify({'error': 'Missing name'}), 400
         request_place = request.get_json().copy()
+        user = storage.get(User, request_place['user_id'])
+        if user is None:
+            abort(404)
         request_place['city_id'] = city_id
         place = Place(**request_place)
         place.save()
