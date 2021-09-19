@@ -8,7 +8,7 @@ from models.amenity import Amenity
 
 @app_views.route('/amenities/<amenity_id>', strict_slashes=False)
 @app_views.route('/amenities', strict_slashes=False)
-def display_amenities(amenity_id):
+def display_amenities(amenity_id=None):
     """display all amenities or specified"""
     if amenity_id is None:
         amenity = []
