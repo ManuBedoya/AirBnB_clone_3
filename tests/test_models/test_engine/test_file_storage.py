@@ -122,18 +122,10 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(storage.count(), len(new_dict))
 
     @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
-    def test_count_places(self):
-        """Test that counts objects in file.json"""
-        from models.place import Place
-        storage = FileStorage()
-        new_dict = storage.all(Place)
-        self.assertEqual(storage.count(Place), len(new_dict))
-
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
     def test_get(self):
         """Test that gets properly objects from file.json"""
         storage = FileStorage()
-        new_dict = storage.all(User)
+        new_dict = storage.all()
         object_to_check = list(new_dict.values())[0]
         object_class = object_to_check.__class__
         object_id = object_to_check.id
